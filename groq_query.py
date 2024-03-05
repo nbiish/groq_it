@@ -12,6 +12,7 @@
 
 
 import os
+import sys
 from groq import Groq
 from dotenv import load_dotenv
 load_dotenv()
@@ -32,7 +33,8 @@ def query_groq(input_string):
         model="mixtral-8x7b-32768",
     )
 
-    return chat_completion.choices[0].message.content
+    return str(chat_completion.choices[0].message.content)
 
 if __name__ == "__main__":
-    print(query_groq("Who are the Anishinaabe?"))
+    input_string = sys.argv[1]
+    print(query_groq(input_string))

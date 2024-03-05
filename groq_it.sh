@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # EXAMPLE USAGE:
 # ./groq_it.sh 'from * as allArticles[0...10] {title, body}'
@@ -32,7 +32,10 @@ then
 fi
 
 # Run the Python script with the first argument passed to the bash script
-python3 groq_query.py "$1"
+result=$(python3 groq_query.py "$1")
+
+# Print the result
+echo $result
 
 # Deactivate the virtual environment
 deactivate
